@@ -36,16 +36,48 @@ const dental = [
     {hora: '14:00', especialista: 'RAQUEL VILLASECA',       paciente: 'ANA SEPULVEDA',  rut: '14441281-0', prevision: 'ISAPRE'},
 ];
 
+
+
+
+/* no modificando el arreglo original */
+
+const nuevaRadiologia = radiologia.slice(1, radiologia.length -1);
+console.log ({nuevaRadiologia});
+
+/* modificando el arreglo original */
+
+radiologia.shift();  /* elimina el primero */
+radiologia.pop();   /* elimina el ultimo */
+
 //Agregar código para el desafio 2 aquí
 
+dental.forEach (paciente => {
+    document.write(
+        `${paciente.hora} - ${paciente.especialista} - ${paciente.paciente} - ${paciente.rut} - ${paciente.prevision} <br />`);
+});
 
+const todoslospacientes = radiologia.concat(dental, radiologia);
+todoslospacientes.forEach((paciente) => {
+    document.write(`${paciente.paciente}<br />`);
+});
 
+const pacientesIsapre = dental.filter((paciente) => {
+    if (paciente.prevision === "ISAPRE") {
+        return paciente;
+    }
+});
+
+const pacientesFonasa = traumatologia.filter((paciente) => {
+    if (paciente.prevision === "FONASA") {
+        return paciente;
+    }
+});
 
 //Agregar código para el desafio 2 aquí
 
-document.write(`<p>Cantidad de atenciones para Radiología: ${radiologia.length}</p>`);
-document.write(`<p>Cantidad de atenciones para Traumatología: ${traumatologia.length}</p>`);
-document.write(`<p>Cantidad de atenciones para Dental: ${dental.length}</p>`);
+document.write(`<p>Cantidad de atenciones para Radiología: ${radiologia.length} </p>`); 
+document.write(`<p>Cantidad de atenciones para Traumatología: ${traumatologia.length} </p>`);
+document.write(`<p>Cantidad de atenciones para Dental: ${dental.length} </p>`);
 
 
 document.write(`<p>Primera atencion: ${radiologia[0].paciente} - ${radiologia[0].prevision} 
